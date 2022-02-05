@@ -2,7 +2,6 @@ package TicTacToe.View;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 import TicTacToe.Controller.CellButtonListener;
 import TicTacToe.Controller.MainController;
