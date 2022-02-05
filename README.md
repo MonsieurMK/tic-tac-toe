@@ -29,7 +29,7 @@ There are two GitHub Actions workflows :
 
 ### Initialization
 
-- **To initialise the Git Flow workflow** : ```bash git flow init```
+- **To initialise the Git Flow workflow** : ```git flow init```
 
 *Set the version tag prefix to "v"*
 
@@ -37,32 +37,32 @@ You should now have two branches : **main** and **develop**
 
 ### Adding a feature
 
-- **To start a feature** : ```bash git flow feature start feature_name```
+- **To start a feature** : ```git flow feature start feature_name```
 
 A new branch will be created from the develop branch.
 
-- **To finish the feature and merge to the develop branch** : ```bash git flow feature finish feature_name```
+- **To finish the feature and merge to the develop branch** : ```git flow feature finish feature_name```
 
-- **You can also push a feature to the remote repository** : ```bash git flow feature publish feature_name```
+- **You can also push a feature to the remote repository** : ```git flow feature publish feature_name```
 
-- **Or pull it from the remote repository** : ```bash git flow feature pull origin feature_name```
+- **Or pull it from the remote repository** : ```git flow feature pull origin feature_name```
 
 ### Creating a new release
 
-- **To start a new release** : ```bash git flow release start 1.2.3```
+- **To start a new release** : ```git flow release start 1.2.3```
 
 A new branch will be created from the develop branch with the associated tag (here with the tag 1.2.3)
 
-- **To finish the release and merge it to both the develop and the main branch** : ```bash git flow release finish 1.2.3```
+- **To finish the release and merge it to both the develop and the main branch** : ```git flow release finish 1.2.3```
 
-- **Then you can push the corresponding tag** : ```bash git push --tags```
+- **Then you can push the corresponding tag** : ```git push --tags```
 
 *Before pushing the tag make sure all the local branches have been pushed to remote*
 
 ## Applying a hotfix
 
-- **To start a hotfix on the main branch** : ```bash git flow hotfix start 1.2.4```
+- **To start a hotfix on the main branch** : ```git flow hotfix start 1.2.4```
 
 This will create a hotfix branch from the main branch
 
-- **Then to finish the hotfix and merge it to both the develop and main branch** : ```bash git flow hotfix finish 1.2.4```
+- **Then to finish the hotfix and merge it to both the develop and main branch** : ```git flow hotfix finish 1.2.4```
