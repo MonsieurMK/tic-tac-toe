@@ -3,12 +3,17 @@
  */
 package TicTacToe;
 
+import TicTacToe.Model.CellState;
+import TicTacToe.Model.Grid;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Grid grid = new Grid();
+        System.out.println(grid.toString());
+        grid.place(0, 0, CellState.X);
+        grid.place(2, 1, CellState.O);
+        grid.place(1, 1, CellState.X);
+        System.out.println(grid.toString());
     }
 }

@@ -5,13 +5,199 @@ package TicTacToe;
 
 import org.junit.jupiter.api.Test;
 
-import TicTacToe.App;
+import TicTacToe.Model.CellState;
+import TicTacToe.Model.Grid;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+
+    private Grid grid;
+
+    @BeforeEach
+    void setUp() {
+        this.grid = new Grid();
     }
+
+    @AfterEach
+    void tearDown() {
+        this.grid.clearGrid();
+    }
+    
+    @Test
+    void testHasWon() {
+        // row 1
+        this.grid.place(0, 0, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 0, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(0, 1, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(2, 0, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(0, 2, CellState.X);
+        assertEquals(CellState.X, this.grid.hasWon());
+
+        this.grid.clearGrid();
+
+        // row 2
+        this.grid.place(1, 0, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(0, 1, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 1, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(2, 0, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 2, CellState.X);
+        assertEquals(CellState.X, this.grid.hasWon());
+
+        this.grid.clearGrid();
+
+        // row 3
+        this.grid.place(2, 0, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 0, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(2, 1, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 2, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(2, 2, CellState.X);
+        assertEquals(CellState.X, this.grid.hasWon());
+
+        this.grid.clearGrid();
+
+        // column 1
+        this.grid.place(0, 0, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 1, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 0, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 2, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(2, 0, CellState.X);
+        assertEquals(CellState.X, this.grid.hasWon());
+
+        this.grid.clearGrid();
+
+        // column 2
+        this.grid.place(0, 1, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 0, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 1, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 2, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(2, 1, CellState.X);
+        assertEquals(CellState.X, this.grid.hasWon());
+
+        this.grid.clearGrid();
+
+        // column 3
+        this.grid.place(0, 2, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 1, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 2, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 0, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(2, 2, CellState.X);
+        assertEquals(CellState.X, this.grid.hasWon());
+
+        this.grid.clearGrid();
+
+        // diagonal 1
+        this.grid.place(0, 0, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 0, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 1, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(2, 0, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(2, 2, CellState.X);
+        assertEquals(CellState.X, this.grid.hasWon());
+
+        this.grid.clearGrid();
+
+        // diagonal 2
+        this.grid.place(2, 0, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 0, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 1, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(2, 1, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(0, 2, CellState.X);
+        assertEquals(CellState.X, this.grid.hasWon());
+
+        this.grid.clearGrid();
+
+        // tie
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(0, 0, CellState.X);
+        this.grid.place(0, 1, CellState.O);
+        this.grid.place(0, 2, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(1, 0, CellState.O);
+        this.grid.place(1, 1, CellState.O);
+        this.grid.place(1, 2, CellState.X);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+        this.grid.place(2, 0, CellState.O);
+        this.grid.place(2, 1, CellState.X);
+        this.grid.place(2, 2, CellState.O);
+        assertEquals(CellState.EMPTY, this.grid.hasWon());
+    }
+
+    @Test 
+    void testisFull() {
+        assertFalse(this.grid.isFull());
+        this.grid.place(0, 0, CellState.X);
+        this.grid.place(0, 1, CellState.O);
+        this.grid.place(0, 2, CellState.X);
+        assertFalse(this.grid.isFull());
+        this.grid.place(1, 0, CellState.O);
+        this.grid.place(1, 1, CellState.O);
+        this.grid.place(1, 2, CellState.X);
+        assertFalse(this.grid.isFull());
+        this.grid.place(2, 0, CellState.O);
+        this.grid.place(2, 1, CellState.X);
+        this.grid.place(2, 2, CellState.O);
+        assertTrue(this.grid.isFull());
+    }
+
+    @Test 
+    void testExceptionIncorrectPlacement() {
+        IllegalArgumentException exception;
+
+        exception = assertThrows(IllegalArgumentException.class, () -> {
+            this.grid.place(0, 1, CellState.EMPTY);
+        });
+        assertEquals("cannot place empty cell", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> {
+            this.grid.place(0, 3, CellState.X);
+        });
+        assertEquals("invalid coordinates", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> {
+            this.grid.place(-2, 1, CellState.X);
+        });
+        assertEquals("invalid coordinates", exception.getMessage());
+        
+        this.grid.place(0, 1, CellState.O);
+        exception = assertThrows(IllegalArgumentException.class, () -> {
+            this.grid.place(0, 1, CellState.X);
+        });
+        assertEquals("cell not empty", exception.getMessage());
+    }
+
 }
