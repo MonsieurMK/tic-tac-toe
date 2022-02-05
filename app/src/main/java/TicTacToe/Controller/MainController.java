@@ -55,8 +55,10 @@ public class MainController {
         return this.currenTurn;
     }
 
-    public void clearGrid() {
+    public void replayGame() {
         this.grid.clearGrid();
+        this.panel.resetGrid();
+        this.currenTurn = Turn.X;
     }
 
 }
