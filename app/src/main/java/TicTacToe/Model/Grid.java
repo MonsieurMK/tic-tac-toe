@@ -1,11 +1,23 @@
 package TicTacToe.Model;
 
+/**
+ * Model class that represents the game's grid
+ */
 public class Grid {
+    /**
+     * Size of the square grid
+     */
     public static final int GRID_SIZE = 3;
     private CellState[][] cells; // inverser inputs i et j des methodes
 
+    /**
+     * The sums of each row, column or diagonal is equal to 15
+     */
     public static final int[][] magicSquare = {{8, 1, 6}, {3, 5, 7}, {4, 9, 2}};
 
+    /**
+     * Creates an empty grid, all cells are initialized with 'EMPTY'
+     */
     public Grid() {
         this.cells = new CellState[GRID_SIZE][GRID_SIZE];
         for (int i = 0; i < GRID_SIZE; i++) {
@@ -15,6 +27,14 @@ public class Grid {
         }
     }
 
+    /**
+     * Places a mark on the grid
+     * @param j i coordinate (swapped)
+     * @param i j coordinate (swapped)
+     * @param state state to be placed on the grid
+     * @throws IllegalArgumentException when the cell is not empty, the state
+     * to be placed is empty or the coordinates are incorrect
+     */
     public void place(int j, int i, CellState state) 
     throws IllegalArgumentException {
         if (state == CellState.EMPTY) {
@@ -30,6 +50,10 @@ public class Grid {
         }
     }
 
+    /**
+     * Tells wether or not there is a winner
+     * @return The winner if the game is won or the empty state if there is no winner yet
+     */
     public CellState hasWon() {
         
         int[][] emptyMagicSquare = new int[GRID_SIZE][GRID_SIZE];
@@ -92,6 +116,10 @@ public class Grid {
         return CellState.EMPTY;
     }
 
+    /**
+     * Returns wether the grid is full or not
+     * @return true if the grid is full, else false
+     */
     public boolean isFull() {
         boolean temp = true;
         for (int i = 0; i < GRID_SIZE; i++) {
@@ -104,6 +132,9 @@ public class Grid {
         return temp;
     }
 
+    /**
+     * Clears the grid of all Xs or Os and resets it to Empty states
+     */
     public void clearGrid() {
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
@@ -112,6 +143,13 @@ public class Grid {
         }
     }
 
+    /**
+     * Returns wether the cell at the given coordinates is empty or not
+     * @param j i coordinate (swapped)
+     * @param i j coordinate (swapped)
+     * @return true if the cell is empty, else false
+     */
+    @Deprecated
     public boolean isCellEmpty(int j, int i) {
         return this.cells[i][j] == CellState.EMPTY;
     }

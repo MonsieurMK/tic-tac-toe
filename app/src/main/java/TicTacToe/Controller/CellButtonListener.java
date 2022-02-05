@@ -6,10 +6,17 @@ import java.awt.event.ActionListener;
 import TicTacToe.View.CellButton;
 import TicTacToe.View.CellButtonState;
 
+/**
+ * Listener for the cell buttons
+ */
 public class CellButtonListener implements ActionListener {
 
     private MainController mc;
 
+    /**
+     * Creates a CellButtonListener
+     * @param mc Associated MainController
+     */
     public CellButtonListener(MainController mc) {
         this.mc = mc;
     }

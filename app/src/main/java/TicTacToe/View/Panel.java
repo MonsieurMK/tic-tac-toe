@@ -11,13 +11,30 @@ import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+/**
+ * Main panel of the frame
+ */
 public class Panel extends JPanel {
 
+    /**
+     * Size of the square grid
+     */
     public static final int GRID_SIZE = 3;
+
+    /**
+     * Cell buttons of the GUI's grid
+     */
     private CellButton[][] cells;
 
+    /**
+     * MainController of the application
+     */
     private MainController mc;
 
+    /**
+     * Creates a panel of the GUI
+     * @param mc MainController of the application
+     */
     public Panel(MainController mc) {
         this.setLayout(new BorderLayout());
 
@@ -50,14 +67,31 @@ public class Panel extends JPanel {
         optionsPanel.add(replayButton);
     }
 
+    /**
+     * Changes the text of a given cell button
+     * @param j i coordinate (swapped)
+     * @param i j coordinate (swapped)
+     * @param text new text to display 
+     */
+    @Deprecated
     public void setCell(int j, int i, String text) {
         this.cells[i][j].setText(text);
     }
 
+    /**
+     * Returns a given cell button on the grid
+     * @param j i coordinate (swapped)
+     * @param i j coordinate (swapped)
+     * @return the cell button
+     */
     public JButton getCell(int j, int i) {
         return this.cells[i][j];
     }
 
+    /**
+     * Displays the winner of the game, or shows that is a tie
+     * @param winner state of the winner, EMPTY if it is a tie
+     */
     public void playerWon(CellButtonState winner) {
         if (winner == CellButtonState.EMPTY) {
             System.out.println("TIE");
@@ -71,6 +105,9 @@ public class Panel extends JPanel {
         }
     }
 
+    /**
+     * Resets the buttons of the grid
+     */
     public void resetGrid() {
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
