@@ -5,8 +5,11 @@ import javax.swing.JPanel;
 
 import TicTacToe.Controller.CellButtonListener;
 import TicTacToe.Controller.MainController;
+import TicTacToe.Controller.ReplayListener;
 
 import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 
 public class Panel extends JPanel {
 
@@ -16,7 +19,12 @@ public class Panel extends JPanel {
     private MainController mc;
 
     public Panel(MainController mc) {
-        this.setLayout(new GridLayout(3, 3));
+        this.setLayout(new BorderLayout());
+
+        // grid panel
+        JPanel gridPanel = new JPanel();
+        gridPanel.setLayout(new GridLayout(3, 3));
+        this.add(gridPanel, BorderLayout.CENTER);
 
         this.cells = new CellButton[GRID_SIZE][GRID_SIZE];
 
@@ -28,9 +36,18 @@ public class Panel extends JPanel {
             for (int j = 0; j < GRID_SIZE; j++) {
                 this.cells[i][j] = new CellButton(j, i); // may not be inverted
                 this.cells[i][j].addActionListener(cellBL);
-                this.add(this.cells[i][j]);
+                gridPanel.add(this.cells[i][j]);
             }
         }
+
+        // optionsPanel
+        JPanel optionsPanel = new JPanel();
+        optionsPanel.setLayout(new FlowLayout());
+        this.add(optionsPanel, BorderLayout.SOUTH);
+
+        JButton replayButton = new JButton("Replay");
+        replayButton.addActionListener(new ReplayListener(this.mc));
+        optionsPanel.add(replayButton);
     }
 
     public void setCell(int j, int i, String text) {
