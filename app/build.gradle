@@ -73,7 +73,7 @@ jar {
         )
     }
 
-    baseName 'TicTacToe' // Change to the desired executable jar name
+    baseName 'tictactoejavagame' // Change to the desired executable jar name
 
     from {
         configurations.runtimeClasspath.collect {it.isDirectory() ? it : zipTree(it)}
